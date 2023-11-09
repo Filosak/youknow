@@ -33,7 +33,7 @@ while run:
     wait_for_answer = True
     while wait_for_answer:
         try:
-            img = ImageGrab.grab(bbox=(600, 255, 1350, 560))
+            img = ImageGrab.grab(bbox=(370, 190, 900, 400))
             img_np = cv.cvtColor(np.array(img), cv.COLOR_BGR2GRAY)
 
             correct_answer = RIGHT_WORDS[pytesseract.image_to_string(img_np).lower().replace("\n", "")]
@@ -44,24 +44,13 @@ while run:
         if keyboard.is_pressed('esc'):
             break
 
-    pyautogui.moveTo(1000, 600, random.uniform(0.2, 0.4))
+    pyautogui.moveTo(650, 460, random.uniform(0.2, 0.4))
     pyautogui.click()
 
-    if (random.random() > 1):
-        correct_answer = correct_answer.replace("a", "s", 1)
+    keyboard.write(correct_answer, random.uniform(0.08, 0.15))
 
-        keyboard.write(correct_answer, random.uniform(0.08, 0.15))
-
-        pyautogui.moveTo(random.randint(800, 1200), random.randint(660, 680), random.uniform(0.2, 0.5))
-        pyautogui.click()
-
-        pyautogui.moveTo(random.randint(800, 1200), random.randint(830, 860), random.uniform(0.2, 0.5))
-        pyautogui.click()
-    else:
-        keyboard.write(correct_answer, random.uniform(0.08, 0.15))
-
-        pyautogui.moveTo(random.randint(800, 1200), random.randint(660, 680), random.uniform(0.2, 0.5))
-        pyautogui.click()
+    pyautogui.moveTo(random.randint(600, 700), random.randint(520, 530), random.uniform(0.2, 0.5))
+    pyautogui.click()
 
     if keyboard.is_pressed('esc'):
         break
